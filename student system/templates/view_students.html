@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>学生信息列表</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style2.css') }}">
+    <style>
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .btn-container a {
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #007bff;
+            color: #007bff;
+            border-radius: 5px;
+        }
+        .btn-container a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            {% if 'error' in message %}
+                <div class="flash-message error">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endwith %}
+    <header>
+        <h1>学生信息列表</h1>
+    </header>
+
+    <form method="POST">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>姓名</th>
+                    <th>生日</th>
+                    <th>出生地</th>
+                    <th>学院</th>
+                    <th>专业</th>
+                    <th>性别</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                    <tr>
+                        <td>{{ student.id }}</td>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.birthday }}</td>
+                        <td>{{ student.placeofbirth }}</td>
+                        <td>{{ student.college }}</td>
+                        <td>{{ student.major }}</td>
+                        <td>{{ student.gender }}</td>
+                        <td>
+                            <a href="{{ url_for('edit_student', id=student.id) }}" class="btn edit-button">编辑</a>
+                            <a href="{{ url_for('delete_student', id=student.id) }}" class="btn delete-button">删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="btn-container">
+            <a href="{{ url_for('index') }}" class="btn return-button">返回首页</a>
+        </div>
+    </form>
+</body>
+</html>

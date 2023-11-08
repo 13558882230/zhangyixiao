@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>删除学生信息</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style2.css') }}">
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <header>
+        <h1>创建学生信息</h1>
+    </header>
+    <!-- 显示学生信息并提供删除按钮 -->
+    <p>学生姓名: {{ student.name }}</p>
+    <p>学生生日: {{ student.birthday }}</p>
+    <p>学生出生地: {{ student.placeofbirth }}</p>
+    <p>学院: {{ student.college }}</p>
+    <p>专业: {{ student.major }}</p>
+    <p>性别: {{ student.gender }}</p>
+
+    <form method="POST" action="{{ url_for('delete_student', id=student.id) }}">
+        <input type="submit" value="删除">
+    </form>
+</body>
+</html>

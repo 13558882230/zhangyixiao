@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>选课</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style3.css') }}">
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <h1>选课</h1>
+    <form method="POST" action="/enroll_course">
+        <h2>可选课程：</h2>
+        <ul>
+            {% for lesson in available_lessons %}
+                <li>
+                    <label>
+                        <input type="checkbox" name="lesson_id" value="{{ lesson.id }}">
+                        {{ lesson.name }} ({{ lesson.teacher }})
+                    </label>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <input type="submit" value="确定">
+    </form>
+
+    <a href="{{ url_for('lesson_index', student_id=session['user_id']) }}">查看选课列表</a>
+</body>
+</html>

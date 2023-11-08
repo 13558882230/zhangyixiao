@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>创建课程信息</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style2.css') }}">
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <header>
+        <h1>创建课程信息</h1>
+    </header>
+    <form method="POST" action="{{ url_for('create_lesson') }}">
+        <!-- 表单字段 -->
+        <label for="name">课程名称:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="teacher">教师:</label>
+        <input type="text" id="teacher" name="teacher" required><br>
+
+        <label for="major">专业:</label>
+        <input type="text" id="major" name="major" required><br>
+
+        <label for="grade">成绩:</label>
+        <input type="text" id="grade" name="grade" required><br>
+
+        <input type="submit" value="创建" class="create-button">
+        <a href="{{ url_for('index') }}" class="create-button">返回首页</a>
+    </form>
+</body>
+</html>
+

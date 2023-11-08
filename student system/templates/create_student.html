@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>创建学生信息</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style2.css') }}">
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <header>
+        <h1>创建学生信息</h1>
+    </header>
+    <form method="POST" action="{{ url_for('create_student') }}">
+        <!-- 表单字段 -->
+        <label for="name">姓名:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="birthday">生日:</label>
+        <input type="date" id="birthday" name="birthday" required><br>
+
+        <label for="placeofbirth">出生地:</label>
+        <input type="text" id="placeofbirth" name="placeofbirth" required><br>
+
+        <label for="college">学院:</label>
+        <input type="text" id="college" name="college" required><br>
+
+        <label for="major">专业:</label>
+        <input type="text" id="major" name="major" required><br>
+
+        <label for="gender">性别:</label>
+        <input type="text" id="gender" name="gender" required><br>
+
+        <input type="submit" value="创建">
+        <a href="{{ url_for('index') }}" class="btn return-button">返回首页</a>
+    </form>
+
+
+</body>
+</html>

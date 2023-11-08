@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>编辑课程信息</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style2.css') }}">
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <header>
+        <h1>创建课程信息</h1>
+    </header>
+    <form method="POST" action="{{ url_for('edit_lesson', id=lesson.id) }}">
+        <!-- 表单字段，显示课程信息并提供编辑选项 -->
+        <label for="name">课程名称:</label>
+        <input type="text" id="name" name="name" value="{{ lesson.name }}" required><br>
+
+        <label for="teacher">教师:</label>
+        <input type="text" id="teacher" name="teacher" value="{{ lesson.teacher }}" required><br>
+
+        <label for="major">专业:</label>
+        <input type="text" id="major" name="major" value="{{ lesson.major }}" required><br>
+
+        <label for="grade">成绩:</label>
+        <input type="text" id="grade" name="grade" value="{{ lesson.grade }}" required><br>
+
+        <input type="submit" value="保存修改">
+    </form>
+</body>
+</html>

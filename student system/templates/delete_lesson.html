@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>删除课程信息</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style2.css') }}">
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <header>
+        <h1>创建课程信息</h1>
+    </header>
+    <!-- 显示课程信息并提供删除按钮 -->
+    <p>课程名称: {{ lesson.name }}</p>
+    <p>教师: {{ lesson.teacher }}</p>
+    <p>专业: {{ lesson.major }}</p>
+    <p>成绩: {{ lesson.grade }}</p>
+
+    <form method="POST" action="{{ url_for('delete_lesson', id=lesson.id) }}">
+        <input type="submit" value="删除">
+    </form>
+</body>
+</html>

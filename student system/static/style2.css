@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+/* 共享的标题样式 */
+header {
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+}
+
+/* 共享的表单样式 */
+form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+input[type="submit"],
+button.logout {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block; /* 修改按钮为内联块元素，以使其并排 */
+    margin-right: 10px; /* 添加右侧间距，以将按钮分开 */
+}
+
+input[type="submit"]:hover,
+button.logout:hover {
+    background-color: #0056b3;
+}
+
+/* 共享的列表样式 */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+/* 共享的管理菜单样式 */
+.admin-menu {
+    width: 50%; /* 移除居中处理，保留宽度设置 */
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-menu h2 {
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+}
+
+.admin-menu ul {
+    padding: 0;
+}
+
+.admin-menu li {
+    margin: 5px 0;
+}
+
+/* 共享的链接样式 */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 退出登录按钮样式 */
+button.logout {
+    display: block;
+    margin: 20px auto;
+}
+
+/* 学生信息管理和课程信息管理部分居中 */
+.admin-menu {
+    text-align: center;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.btn.edit-button,
+.btn.delete-button {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+}

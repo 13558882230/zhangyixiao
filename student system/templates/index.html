@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>管理后台</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style2.css') }}">
+    <style>
+        /* 添加自定义样式以实现学生信息管理和课程信息管理的居中对齐 */
+        .admin-menu-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* 移动退出按钮到页面底部并居中对齐 */
+        .logout-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <header>
+        <h1>管理后台</h1>
+    </header>
+
+    <div class="admin-menu-container">
+        <div class="admin-menu">
+            <h2>学生信息管理</h2>
+            <ul>
+                <li><a href="{{ url_for('create_student') }}">创建学生信息</a></li>
+                <li><a href="{{ url_for('view_students') }}">查看学生信息</a></li>
+                <!-- 添加其他学生信息管理功能链接 -->
+            </ul>
+        </div>
+
+        <div class="admin-menu">
+            <h2>课程信息管理</h2>
+            <ul>
+                <li><a href="{{ url_for('create_lesson') }}">创建课程信息</a></li>
+                <li><a href="{{ url_for('view_lessons') }}">查看课程信息</a></li>
+                <!-- 添加其他课程信息管理功能链接 -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="logout-container">
+        <button class="logout" onclick="location.href='{{ url_for('login') }}'">退出登录</button>
+    </div>
+</body>
+</html>
+

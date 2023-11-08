@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>选课列表</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style3.css') }}">
+</head>
+
+<body>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                {% if 'success' in message %}
+                    <div class="flash-message success">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endwith %}
+
+        <h1>选课列表</h1>
+        <h2>学生信息：</h2>
+        <p>学生姓名: {{ student.name }}</p>
+        <p>学生学号: {{ student.id }}</p>
+        <h2>已选课程：</h2>
+        <ul>
+            {% for lesson in student_lessons %}
+                <li>{{ lesson.name }} ({{ lesson.teacher }})</li>
+            {% endfor %}
+        </ul>
+        <h2>总学分：</h2>
+        <p>{{ total_credit }}</p>
+
+        <a href="{{ url_for('return_to_enroll_course') }}" class="btn">返回选课页面</a>
+        <a href="{{ url_for('root') }}" class="btn">退出登录</a>
+    </div>
+</body>
+</html>
